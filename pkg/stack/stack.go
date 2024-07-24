@@ -373,21 +373,24 @@ func (s *SipStack) prepareRequest(req sip.Request) sip.Request {
 		if !viaHop.Params.Has("branch") {
 			viaHop.Params.Add("branch", sip.String{Str: sip.GenerateBranch()})
 		}
+
+		viaHop.Params.Add("rport", sip.String{Str: "rport"})
 	} else {
 		viaHop = &sip.ViaHop{
 			ProtocolName:    "SIP",
 			ProtocolVersion: "2.0",
 			Params: sip.NewParams().
-				Add("rport", nil).
 				Add("branch", sip.String{Str: sip.GenerateBranch()}),
 		}
+
+		viaHop.Params.Add("rport", sip.String{Str: "rport"})
 
 		req.PrependHeaderAfter(sip.ViaHeader{
 			viaHop,
 		}, "Route")
 	}
 
-	s.appendAutoHeaders(req)
+	//s.appendAutoHeaders(req)
 
 	return req
 }

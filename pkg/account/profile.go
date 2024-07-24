@@ -19,7 +19,7 @@ func init() {
 	logger = utils.NewLogrusLogger(log.DebugLevel, "UserAgent", nil)
 }
 
-//AuthInfo .
+// AuthInfo .
 type AuthInfo struct {
 	AuthUser string
 	Realm    string
@@ -52,9 +52,9 @@ func (p *Profile) Contact() *sip.Address {
 		Uri:    uri,
 		Params: sip.NewParams(),
 	}
-	if p.InstanceID != "nil" {
-		contact.Params.Add("+sip.instance", sip.String{Str: p.InstanceID})
-	}
+	// if p.InstanceID != "nil" {
+	// 	contact.Params.Add("+sip.instance", sip.String{Str: p.InstanceID})
+	// }
 
 	for key, value := range p.ContactParams {
 		contact.Params.Add(key, sip.String{Str: value})
@@ -66,7 +66,7 @@ func (p *Profile) Contact() *sip.Address {
 	return contact
 }
 
-//NewProfile .
+// NewProfile .
 func NewProfile(
 	uri sip.Uri,
 	displayName string,
@@ -88,7 +88,8 @@ func NewProfile(
 			transport = "udp"
 		}
 		addr := stack.GetNetworkInfo(transport)
-		uri, err := parser.ParseUri(fmt.Sprintf("sip:%s@%s;transport=%s", p.URI.User(), addr.Addr(), transport))
+		//uri, err := parser.ParseUri(fmt.Sprintf("sip:%s@%s;transport=%s", p.URI.User(), addr.Addr(), transport))
+		uri, err := parser.ParseUri(fmt.Sprintf("sip:%s@%s", p.URI.User(), addr.Addr()))
 		if err == nil {
 			p.ContactURI = uri
 		} else {
@@ -104,7 +105,7 @@ func NewProfile(
 	return p
 }
 
-//RegisterState .
+// RegisterState .
 type RegisterState struct {
 	Account    *Profile
 	StatusCode sip.StatusCode
