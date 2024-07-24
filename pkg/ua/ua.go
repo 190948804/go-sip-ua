@@ -6,17 +6,17 @@ import (
 	"strconv"
 	"sync"
 
-	"github.com/cloudwebrtc/go-sip-ua/pkg/account"
-	"github.com/cloudwebrtc/go-sip-ua/pkg/auth"
-	"github.com/cloudwebrtc/go-sip-ua/pkg/session"
-	"github.com/cloudwebrtc/go-sip-ua/pkg/stack"
+	"github.com/190948804/go-sip-ua/pkg/account"
+	"github.com/190948804/go-sip-ua/pkg/auth"
+	"github.com/190948804/go-sip-ua/pkg/session"
+	"github.com/190948804/go-sip-ua/pkg/stack"
 
 	"github.com/ghettovoice/gosip/log"
 	"github.com/ghettovoice/gosip/sip"
 	"github.com/ghettovoice/gosip/transaction"
 	"github.com/ghettovoice/gosip/util"
 
-	"github.com/cloudwebrtc/go-sip-ua/pkg/utils"
+	"github.com/190948804/go-sip-ua/pkg/utils"
 )
 
 // SessionKey - Session Key for Session Storage
@@ -38,13 +38,13 @@ type UserAgentConfig struct {
 	SipStack *stack.SipStack
 }
 
-//InviteSessionHandler .
+// InviteSessionHandler .
 type InviteSessionHandler func(s *session.Session, req *sip.Request, resp *sip.Response, status session.Status)
 
-//RegisterHandler .
+// RegisterHandler .
 type RegisterHandler func(regState account.RegisterState)
 
-//UserAgent .
+// UserAgent .
 type UserAgent struct {
 	InviteStateHandler   InviteSessionHandler
 	RegisterStateHandler RegisterHandler
@@ -53,7 +53,7 @@ type UserAgent struct {
 	log                  log.Logger
 }
 
-//NewUserAgent .
+// NewUserAgent .
 func NewUserAgent(config *UserAgentConfig) *UserAgent {
 	ua := &UserAgent{
 		config:               config,

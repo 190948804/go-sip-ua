@@ -10,10 +10,10 @@ import (
 	"sync"
 	"time"
 
-	"github.com/cloudwebrtc/go-sip-ua/pkg/auth"
+	"github.com/190948804/go-sip-ua/pkg/auth"
 	"github.com/tevino/abool"
 
-	"github.com/cloudwebrtc/go-sip-ua/pkg/utils"
+	"github.com/190948804/go-sip-ua/pkg/utils"
 	"github.com/ghettovoice/gosip/log"
 	"github.com/ghettovoice/gosip/sip"
 	"github.com/ghettovoice/gosip/transaction"
